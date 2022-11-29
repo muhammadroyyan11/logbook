@@ -15,7 +15,7 @@
             <?php
             if (userdata('role') == 2) { ?>
                 <div class="pull-right">
-                    <a href="<?= site_url('logbook/add') ?>" class="btn btn-primary btn-flat">
+                    <a href="<?= site_url('Pelatihan/add') ?>" class="btn btn-primary btn-flat">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                 </div>
@@ -26,6 +26,7 @@
         <?php
         if (userdata('role') == 2) { ?>
             <div class="box-body table-responsive">
+                <?= $this->session->flashdata('pesan'); ?>
                 <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>
@@ -48,12 +49,18 @@
                                     <td><?= $data->nama_pelatihan ?></td>
                                     <td><?= $data->tanggal; ?></td>
                                     <td><?= $data->skp ?></td>
-                                    <td><?= $data->sertifikat ?></td>
+                                    <?php
+                                    if ($data->sertifikat != null) { ?>
+                                        <td><a download="<?= $data->sertifikat ?>" href="<?= base_url() ?>assets/upload/sertifikat/<?= $data->sertifikat ?>"><i class="fa fa-download" aria-hidden="true"></i> <?= $data->sertifikat ?></a></td>
+                                    <?php } else { ?>
+                                        <td>Data tidak ada</td>
+                                    <?php }
+                                    ?>
                                     <td>
-                                        <a href="<?= site_url('pelatihan/delete/' . $data->id_pelatihan) ?>" class="btn btn-warning btn-flat" title="Edit">
+                                        <a href="<?= site_url('Pelatihan/edit/' . $data->id_pelatihan) ?>" class="btn btn-warning btn-flat" title="Edit">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="<?= site_url('pelatihan/delete/' . $data->id_pelatihan) ?>" class="btn btn-danger btn-flat" title="Hapus">
+                                        <a href="<?= site_url('Pelatihan/delete/' . $data->id_pelatihan) ?>"  onclick="return confirm('Yakin ingin menghapus data?')" class="btn btn-danger btn-flat" title="Hapus">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -69,65 +76,37 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kompetensi</th>
-                            <th>Kode</th>
-                            <th>Kewenangan</th>
-                            <th>Metode</th>
-                            <th>Status</th>
+                            <th>Nama Pelatihan</th>
+                            <th>Tanggal</th>
+                            <th>SKP</th>
+                            <th>Sertifikat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($log as $key => $data) {
+                        foreach ($pelatihan as $key => $data) {
                         ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $data->kompetensi ?></td>
-                                <td><?= $data->kode ?></td>
-                                <td><?= $data->kewenangan ?></td>
-                                <td>
-                                    <?= $data->metode ?>
-                                    <div class="pull-right">
-                                        <div class="btn-group">
-                                            <button href="<?= site_url('logbook/verify/' . $data->id_log) ?>" class="btn btn-circle btn-sm btn-secondary" dropdown-toggle" data-toggle="dropdown">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="<?= site_url('logbook/changeM/' . $data->id_log) ?>">Mandiri</a></li>
-                                                <li><a href="<?= site_url('logbook/changeS/' . $data->id_log) ?>">Supervisi</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><?= $data->nama_pelatihan ?></td>
+                                <td><?= $data->tanggal; ?></td>
+                                <td><?= $data->skp ?></td>
                                 <?php
-                                if ($data->status == 1) { ?>
-                                    <td>
-                                        <center><small class="label bg-red">Belum diverifikasi</small></center>
-                                    </td>
-                                <?php } elseif ($data->status == 2) { ?>
-                                    <td>
-                                        <center><small class="label bg-green">Telah diverifikasi</small></center>
-                                    </td>
+                                if ($data->sertifikat != null) { ?>
+                                    <td><a href=""><i class="fa fa-download" aria-hidden="true"></i> <?= $data->sertifikat ?></a></td>
                                 <?php } else { ?>
-                                    <td>
-                                        <center>Status error</center>
-                                    </td>
+                                    <td>Data tidak ada</td>
                                 <?php }
                                 ?>
                                 <td>
-                                    <?php
-                                    if ($data->status == 1) { ?>
-                                        <a href="<?= site_url('logbook/verify/' . $data->id_log) ?>" class="btn btn-circle btn-sm btn-success" title="Verifikasi logbook">
-                                            <i class="fa fa-check"></i>
-                                        </a>
-                                    <?php } else { ?>
-                                        <a href="<?= site_url('logbook/cancel/' . $data->id_log) ?>" class="btn btn-danger btn-flat" title="Tolak logbook">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    <?php }
-                                    ?>
+                                    <a href="<?= site_url('pelatihan/delete/' . $data->id_pelatihan) ?>" class="btn btn-warning btn-flat" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="<?= site_url('pelatihan/delete/' . $data->id_pelatihan) ?>" class="btn btn-danger btn-flat" title="Hapus">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php

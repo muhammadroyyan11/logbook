@@ -76,7 +76,7 @@ class Logbook extends CI_Controller
                 $this->logbook->update_kode($params);
 
                 set_pesan('Data berhasil disimpan');
-                redirect('logbook');
+                redirect('Logbook');
             } else {
                 set_pesan('Data gagal disimpan, Silahkan isi data kembali', FALSE);
                 redirect('logbook/add');
@@ -94,10 +94,10 @@ class Logbook extends CI_Controller
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil diverifikasi');
-            redirect('logbook');
+            redirect('Logbook');
         } else {
             set_pesan('Terjadi kesalahan saat verifikasi logbook', false);
-            redirect('logbook');
+            redirect('Logbook');
         }
     }
 
@@ -111,11 +111,11 @@ class Logbook extends CI_Controller
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Cancel verifikasi berhasil');
-            redirect('logbook');
+            redirect('Logbook');
         } else {
             set_pesan('Terjadi kesalahan saat cancel verifikasi logbook', false);
-            redirect('logbook');
-        }
+            redirect('Logbook');
+        }   
     }
 
     public function changeM($id)
@@ -128,10 +128,10 @@ class Logbook extends CI_Controller
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Berhasil mengupdate logbook');
-            redirect('logbook');
+            redirect('Logbook');
         } else {
             set_pesan('Terjadi kesalahan mengubah data', false);
-            redirect('logbook');
+            redirect('Logbook');
         }
     }
 
@@ -145,10 +145,10 @@ class Logbook extends CI_Controller
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Berhasil mengupdate logbook');
-            redirect('logbook');
+            redirect('Logbook');
         } else {
             set_pesan('Terjadi kesalahan mengubah data', false);
-            redirect('logbook');
+            redirect('Logbook');
         }
     }
 }

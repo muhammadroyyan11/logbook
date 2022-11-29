@@ -14,7 +14,7 @@
         <div class="box-header">
             <h3 class="box-title"></h3>
             <div class="pull-right">
-                <a href="<?= site_url('logbook') ?>" class="btn btn-warning btn-flat">
+                <a href="<?= site_url('Logbook') ?>" class="btn btn-warning btn-flat">
                     <i class="fa fa-undo"></i> Kembali
                 </a>
             </div>

@@ -26,6 +26,7 @@
         <?php
         if (userdata('role') == 2) { ?>
             <div class="box-body table-responsive">
+                <?= $this->session->flashdata('pesan'); ?>
                 <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>

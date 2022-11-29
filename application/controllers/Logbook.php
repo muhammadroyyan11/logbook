@@ -23,6 +23,16 @@ class Logbook extends CI_Controller
         $this->template->load('template', 'logbook/data', $data);
     }
 
+    public function detail($id)
+    {   
+        $getId = $this->base->get('logbook', NULL, ['id_log' => $id])->row();
+        $data = array(
+            'title'     => 'Detail Logbook',
+            'row'       => $getId
+        );
+        $this->template->load('template', 'logbook/detail', $data);
+    }
+
     public function add()
     {
         //Batas

@@ -121,14 +121,16 @@ class Base_model extends CI_Model
         return $this->db->get('user')->result_array();
     }
 
-    public function get($table, $order ,  $where = null)
+    public function get($table, $order = null ,  $where = null)
     {
         $this->db->select('*');
         $this->db->from($table);
         if ($where != null) {
             $this->db->where($where);
         }
-        $this->db->order_by($order, 'DESC');
+        if ($order != null) {
+            $this->db->order_by($order, 'DESC');
+        }
         $sql = $this->db->get();
         return $sql;
     }

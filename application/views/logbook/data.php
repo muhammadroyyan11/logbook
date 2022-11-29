@@ -36,6 +36,7 @@
                             <th>Kewenangan</th>
                             <th>Metode</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +79,11 @@
                                         </td>
                                     <?php }
                                     ?>
+                                    <td>
+                                        <a href="<?= site_url('logbook/detail/' . $data->id_log) ?>" class="btn btn-circle btn-sm btn-primary" title="Detail logbook">
+                                            <i class="fa fa-info"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                         <?php }
                         } ?>

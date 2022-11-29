@@ -70,32 +70,54 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]|alpha_numeric');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[3]|trim');
         $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]|trim');
-        $this->form_validation->set_rules('nama_lengkap', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
-        $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Buat Akun';
+            $data['pk']    = $this->base->get('kode')->result();
             $this->template->load('tempauth', 'auth/register', $data);
         } else {
             $input = $this->input->post(null, true);
-            unset($input['password2']);
-            $input['password']      = password_hash($input['password'], PASSWORD_DEFAULT);
-            $input['role']          = 'gudang';
-            $input['foto']          = 'user.png';
-            $input['is_active']     = 0;
-            $input['created_at']    = time();
 
-            $query = $this->base->insert('user', $input);
-            if ($query) {
-                set_pesan('daftar berhasil. Selanjutnya silahkan hubungi admin untuk mengaktifkan akun anda.');
+            $getKode = substr($input['nip'], 0, -3);
+
+            if ($getKode == '01') {
+                $params = [
+                    'nama'      => $input['nama'],
+                    'email'     => $input['email'],
+                    'password'  => password_hash($input['password'], PASSWORD_DEFAULT),
+                    'role'      => 1,
+                    'is_active' => 1,
+                    'kode_pk'   => $input['pilih'],
+                    'nip'       => $input['nip'],
+                    'foto'      => 'user.png',
+                    'username'  => $input['username'],
+                    'tanggal_lahir'       => $input['ttl']
+                ];
+            } else {
+                $params = [
+                    'nama'      => $input['nama'],
+                    'email'     => $input['email'],
+                    'password'  => password_hash($input['password'], PASSWORD_DEFAULT),
+                    'role'      => 2,
+                    'is_active' => 1,
+                    'kode_pk'   => $input['pilih'],
+                    'nip'       => $input['nip'],
+                    'foto'      => 'user.png',
+                    'username'  => $input['username'],
+                    'tanggal_lahir'       => $input['ttl']
+                ];
+            }
+            $this->base->insert('user', $params);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Pendaftaran berhasil, Silahkan Login');
                 redirect('auth');
             } else {
-                set_pesan('gagal menyimpan ke database', false);
-                redirect('register');
+                set_pesan('Pendaftaran Gagal', FALSE);
             }
         }
     }

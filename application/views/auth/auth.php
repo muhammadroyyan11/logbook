@@ -17,6 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
+                    <a href="<?= site_url('auth/register')?>">Register</a>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">

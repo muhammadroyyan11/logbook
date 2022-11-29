@@ -43,8 +43,8 @@
 							<ul class="dropdown-menu">
 								<li class="user-header">
 									<img src="<?= base_url() ?>assets/foto/images.png">
-									<p><span class="hidden-xs">tes</span>
-										<small>Indonesia</small>
+									<p><span class="hidden-xs"><?= userdata('nama')?></span>
+										<small><?= userdata('nip')?></small>
 									</p>
 								</li>
 								<li class="user-footer">
@@ -106,8 +106,8 @@
 						</ul>
 					</li> -->
 
-					<li class="header">Master Data</li>
-					<li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : '' ?>><a href="<?= site_url('user') ?>"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<!-- <li class="header">Master Data</li>
+					<li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : '' ?>><a href="<?= site_url('user') ?>"><i class="fa fa-user"></i> <span>Users</span></a></li> -->
 
 				</ul>
 			</section>

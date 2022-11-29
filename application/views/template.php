@@ -75,8 +75,8 @@
 					</li>
 					<?php
 					if (userdata('role') == 2) { ?>
-						<li <?= $this->uri->segment(1) == 'logbook' ? 'class="active"' : '' ?>>
-							<a href="<?= site_url('logbook') ?>"><i class="fa fa-list"></i> <span>Isi LogBook</span></a>
+						<li <?= $this->uri->segment(1) == 'Logbook' ? 'class="active"' : '' ?>>
+							<a href="<?= site_url('Logbook') ?>"><i class="fa fa-list"></i> <span>Isi LogBook</span></a>
 						</li>
 					<?php }
 					?>

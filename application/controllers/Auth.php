@@ -15,7 +15,7 @@ class Auth extends CI_Controller
     private function _has_login()
     {
         if ($this->session->has_userdata('login_session')) {
-            redirect('admin/dashboard');
+            redirect('dashboard');
         }
     }
 

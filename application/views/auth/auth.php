@@ -1,10 +1,10 @@
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>ANTRIAN </b>LOKET</a>
+        <a href="#"><b>Logbook </b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Silahkan Masuk ke Sistem Antrian</p>
+        <p class="login-box-msg">Silahkan Masuk ke Sistem Logbook</p>
         <?= $this->session->flashdata('pesan'); ?>
         <form action="" method="post">
             <div class="form-group has-feedback">

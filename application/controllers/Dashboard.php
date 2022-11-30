@@ -32,9 +32,12 @@ class Dashboard extends CI_Controller
         ];
 
         $this->base->edit('user', $params, ['id_user' => userdata('id_user')]);
-        
+
         if ($this->db->affected_rows() > 0) {
             set_pesan('Pemilihan PK Berhasil');
+            redirect('dashboard');
+        } else {
+            set_pesan('Pemilihan PK Gagal, Harap coba lagi ', FALSE);
             redirect('dashboard');
         }
     }

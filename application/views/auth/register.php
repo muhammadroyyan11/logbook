@@ -36,16 +36,6 @@
                 <input type="email" class="form-control" name="email" placeholder="Email">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-            <div class="form-group">
-                <select name="pilih" id="" class="form-control">
-                    <option value="">-- Silahkan Pilih PK--</option>
-                    <?php
-                    foreach ($pk as $key => $data) { ?>
-                        <option value="<?= $data->id_kode?>"><?= $data->value?></option>
-                    <?php }
-                    ?>
-                </select>
-            </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">

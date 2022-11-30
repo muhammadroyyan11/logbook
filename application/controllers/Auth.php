@@ -92,7 +92,7 @@ class Auth extends CI_Controller
                     'password'  => password_hash($input['password'], PASSWORD_DEFAULT),
                     'role'      => 1,
                     'is_active' => 1,
-                    'kode_pk'   => $input['pilih'],
+                    'kode_pk'   => NULL,
                     'nip'       => $input['nip'],
                     'foto'      => 'user.png',
                     'username'  => $input['username'],

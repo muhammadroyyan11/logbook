@@ -10,15 +10,15 @@
 </section>
 
 <section class="content">
-
+  <?= $this->session->flashdata('pesan'); ?>
   <div class="row">
-    <div class="col-lg-5 col-xs-6">
+    <div class="col-md-6">
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3><?= date('H:i');?></h3>
+          <h3><?= date('H:i'); ?></h3>
 
-          <p><?= date('Y-m-d')?></p>
+          <p><?= date('Y-m-d') ?></p>
         </div>
         <div class="icon">
           <i class="ion ion-android-calendar"></i>
@@ -27,5 +27,56 @@
       </div>
     </div>
     <!-- ./col -->
+    <!-- /.col -->
   </div>
+
+  <?php
+  if (userdata('role') == 2 && userdata('kode_pk') == NULL) { ?>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Pilih jenis PK</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="row">
+              <form action="<?= site_url('dashboard/pilih') ?>" method="post">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="pilih">Pilih PK</label>
+                    <select name="pilih" id="" class="form-control">
+                      <option value="">-- Silahkan Pilih PK--</option>
+                      <?php
+                      foreach ($pk as $key => $data) { ?>
+                        <option value="<?= $data->id_kode ?>"><?= $data->value ?></option>
+                      <?php }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- ./box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+    </div>
+  <?php  }
+  ?>
+
 </section>

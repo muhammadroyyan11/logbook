@@ -12,7 +12,28 @@
 <section class="content">
   <?= $this->session->flashdata('pesan'); ?>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
+      <div class="box box-default">
+
+
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="chart-responsive text-center">
+              <img src="<?= base_url() ?>assets/foto/logo.png" alt="" style="max-width: 10rem;">
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+
+        <!-- /.footer -->
+      </div>
+    </div>
+    <div class="col-md-9">
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">

@@ -83,14 +83,14 @@ class Rekap extends CI_Controller
 
         if ($table_ == 'logbook') :
             $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
-            $pdf->Cell(145, 7, 'PK', 1, 0, 'C');
+            $pdf->Cell(145, 7, 'Kompetensi', 1, 0, 'C');
             $pdf->Cell(35, 7, 'Jumlah pilih', 1, 0, 'C');
             $pdf->Ln();
             $no = 1;
             foreach ($data as $key => $d) {
                 $pdf->SetFont('Times', '', 11);
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-                $pdf->Cell(145, 7, $d['kode'], 1, 0, 'C');
+                $pdf->Cell(145, 7, $d['kode'] . ' - ' . $d['kompetensi'], 1, 0, 'C');
                 $pdf->Cell(35, 7, $d['count'], 1, 0, 'C');
                 $pdf->Ln();
             }

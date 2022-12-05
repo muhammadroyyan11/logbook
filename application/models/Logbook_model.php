@@ -65,7 +65,7 @@ class Logbook_model extends CI_Model
 
     public function get_rekap_user($where = null, $range = null)
     {
-        $this->db->select('logbook.kode, COUNT(*) AS count');
+        $this->db->select('logbook.kode, logbook.kompetensi, COUNT(*) AS count');
         $this->db->from('pilihan');
         if ($where != NULL) {
             $this->db->where('user', $where);

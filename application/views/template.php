@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/Ionicons/css/ionicons.min.css">
 	<!-- daterange picker -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- bootstrap datepicker -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
@@ -20,7 +22,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini <?= $this->uri->segment(1) == 'ambil' ? 'sidebar-collapse' : null ?>">
+<body class="skin-blue sidebar-mini">
 
 	<div class="wrapper">
 		<header class="main-header">
@@ -31,9 +33,6 @@
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
 					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
 				</a>
 
 				<div class="navbar-custom-menu">

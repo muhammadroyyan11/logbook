@@ -1,9 +1,10 @@
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Logbook </b></a>
+        <img src="<?= base_url() ?>assets/foto/logo.png" alt="" style="max-width: 10rem;"><br>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
+
         <p class="login-box-msg">Silahkan Masuk ke Sistem Logbook</p>
         <?= $this->session->flashdata('pesan'); ?>
         <form action="" method="post">
@@ -17,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <a href="<?= site_url('auth/register')?>">Register</a>
+                    <a href="<?= site_url('auth/register') ?>">Register</a>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">

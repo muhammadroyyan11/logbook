@@ -1,6 +1,6 @@
 <div class="register-box">
     <div class="register-logo">
-        <a href="# "><b>Logbook</b></a>
+        <img src="<?= base_url() ?>assets/foto/logo.png" alt="" style="max-width: 10rem;"><br>
     </div>
 
     <div class="register-box-body">
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <input type="number" class="form-control" maxlength="5" name="nip" placeholder="Nomor Induk Pegawai">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                <small>  (Masukkan NIP maksimal 5 digit)</small>
+                <small> (Masukkan NIP maksimal 5 digit)</small>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" name="username" placeholder="Username">
@@ -40,9 +40,9 @@
             <div class="form-group">
                 <select name="dept" class="form-control">
                     <option value="NULL">-- Pilih Ruang --</option>
-                    <?php 
+                    <?php
                     foreach ($dept as $key => $data) { ?>
-                       <option value="<?= $data->id_dept?>"><?= $data->nama_dept?></option>
+                        <option value="<?= $data->id_dept ?>"><?= $data->nama_dept ?></option>
                     <?php }
                     ?>
                 </select>

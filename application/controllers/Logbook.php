@@ -16,9 +16,13 @@ class Logbook extends CI_Controller
     public function index()
     {
         $log = $this->base->get('logbook', 'id_log')->result();
+        $logbook = $this->base->get('logbook', NULL ,['kode_id' => userdata('kode_pk')])->result();
+        
+        // var_dump($logbook);
         $data = array(
             'title' => 'Isi Logbook',
-            'log'   => $log
+            'log'   => $log,
+            'logbook' => $logbook
         );
         $this->template->load('template', 'logbook/data', $data);
     }
@@ -34,6 +38,17 @@ class Logbook extends CI_Controller
     }
 
     public function add()
+    {
+        // 
+        var_dump(userdata('kode'));
+        $data = array(
+            'title'     => 'Tambah Log baru'
+        );
+
+        $this->template->load('template', 'logbook/add', $data);
+    }
+
+    public function addd()
     {
         //Batas
         $this->form_validation->set_rules('kompetensi', 'Kompetensi', 'required');

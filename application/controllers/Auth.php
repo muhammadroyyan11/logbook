@@ -79,6 +79,7 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Buat Akun';
             $data['pk']    = $this->base->get('kode')->result();
+            $data['dept']  = $this->base->get('dept')->result();
             $this->template->load('tempauth', 'auth/register', $data);
         } else {
             $input = $this->input->post(null, true);
@@ -96,7 +97,8 @@ class Auth extends CI_Controller
                     'nip'       => $input['nip'],
                     'foto'      => 'user.png',
                     'username'  => $input['username'],
-                    'tanggal_lahir'       => $input['ttl']
+                    'tanggal_lahir'       => $input['ttl'],
+                    'dept'      => $input['dept']
                 ];
             } else {
                 $params = [
@@ -109,7 +111,8 @@ class Auth extends CI_Controller
                     'nip'       => $input['nip'],
                     'foto'      => 'user.png',
                     'username'  => $input['username'],
-                    'tanggal_lahir'       => $input['ttl']
+                    'tanggal_lahir'       => $input['ttl'],
+                    'dept'      => $input['dept']
                 ];
             }
             $this->base->insert('user', $params);

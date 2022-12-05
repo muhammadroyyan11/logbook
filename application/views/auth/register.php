@@ -13,6 +13,7 @@
             </div>
             <div class="form-group">
                 <input type="date" class="form-control" name="ttl" placeholder="Tanggal Lahir">
+                <!-- <input type="text" class="form-control" id="tanggalLahir" placeholder="Tanggal Lahir"> -->
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group">
@@ -35,6 +36,16 @@
             <div class="form-group">
                 <input type="email" class="form-control" name="email" placeholder="Email">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group">
+                <select name="dept" class="form-control">
+                    <option value="NULL">-- Pilih Ruang --</option>
+                    <?php 
+                    foreach ($dept as $key => $data) { ?>
+                       <option value="<?= $data->id_dept?>"><?= $data->nama_dept?></option>
+                    <?php }
+                    ?>
+                </select>
             </div>
             <div class="row">
                 <div class="col-xs-8">

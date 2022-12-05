@@ -17,13 +17,13 @@
                     <div class="col-sm-10 form-group">
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios" id="logbook" name="transaksi" checked>
+                                <input value="logbook" type="radio" name="transaksi" id="logbook" name="transaksi">
                                 Logbook
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios" id="pelatihan" name="transaksi">
+                                <input value="pelatihan" type="radio" name="transaksi" id="pelatihan" name="transaksi">
                                 Pelatihan
                             </label>
                         </div>
@@ -33,7 +33,7 @@
                     <label for="inputPassword3" class="col-sm-2 control-label">Periode Tanggal</label>
 
                     <div class="col-sm-10">
-                        <input type="text" id="reservation" class="form-control" name="tanggal" placeholder="Pilih Range Tanggal">
+                        <input type="text" id="reservation" class="form-control" name="tanggal" placeholder="Pilih Range Tanggal" value="<?= set_value('tanggal'); ?>">
                         <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                     </div>
                 </div>

@@ -196,7 +196,7 @@
 			$('#reservationtime').daterangepicker({
 				timePicker: true,
 				timePickerIncrement: 30,
-				format: 'MM/DD/YYYY h:mm A'
+				format: 'Y-m-d'
 			})
 			//Date range as a button
 			$('#daterange-btn').daterangepicker({

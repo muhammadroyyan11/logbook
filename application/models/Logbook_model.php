@@ -62,4 +62,21 @@ class Logbook_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function get_rekap_user($where = null, $range = null)
+    {
+        $this->db->select('logbook.kode, COUNT(*) AS count');
+        $this->db->from('pilihan');
+        if ($where != NULL) {
+            $this->db->where('user', $where);
+        }
+        if ($range != null) {
+            $this->db->where('date' . ' >=', $range['mulai']);
+            $this->db->where('date' . ' <=', $range['akhir']);
+        }
+        $this->db->join('logbook', 'logbook.id_log  = pilihan.logbook');
+        $this->db->group_by('logbook.kode');
+        $query = $this->db->get();
+        return $query;
+    }
 }

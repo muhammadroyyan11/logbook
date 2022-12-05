@@ -10,11 +10,12 @@ class VerifyLog extends CI_Controller
         cek_login();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Base_model', 'base');
+        $this->load->model('Logbook_model', 'logbook');
     }
 
     public function index()
     {
-        $log = $this->base->get('logbook', 'id_log')->result();
+        $log = $this->logbook->get_by_kepala(userdata('dept'))->result();
         $data = array(
             'title' => 'Verifikasi Logbook',
             'log'   => $log

@@ -15,10 +15,10 @@ class Logbook extends CI_Controller
 
     public function index()
     {
-        $log = $this->base->get('logbook', 'id_log')->result();
-        $logbook = $this->base->get('logbook', NULL ,['kode_id' => userdata('kode_pk')])->result();
+        $log = $this->logbook->get_by_user(userdata('id_user'))->result();
+        $logbook = $this->logbook->get(userdata('kode_pk'))->result();
         
-        // var_dump($logbook);
+        // var_dump($log);
         $data = array(
             'title' => 'Isi Logbook',
             'log'   => $log,
@@ -37,18 +37,31 @@ class Logbook extends CI_Controller
         $this->template->load('template', 'logbook/detail', $data);
     }
 
-    public function add()
+    public function pilih($id)
     {
-        // 
-        var_dump(userdata('kode'));
-        $data = array(
-            'title'     => 'Tambah Log baru'
-        );
+        $logbook = $this->logbook->get_row($id)->row();
 
-        $this->template->load('template', 'logbook/add', $data);
+        $params = [
+            'user' => userdata('id_user'),
+            'logbook' => $id,
+            'metode'  => 'Silahkan dipilih',
+            'date'    => date('Y-m-d'),
+            'status'  => 1,
+            'ruang'   => userdata('dept')  
+        ];
+
+        $this->logbook->insert('pilihan', $params);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Berhasil memilih log');
+            redirect('Logbook');
+        } else {
+            set_pesan('Pemilihan Log gagal, Silahkan coba lagi', FALSE);
+            redirect('Logbook');
+        }
     }
 
-    public function addd()
+    public function add()
     {
         //Batas
         $this->form_validation->set_rules('kompetensi', 'Kompetensi', 'required');
@@ -114,15 +127,15 @@ class Logbook extends CI_Controller
         $params = [
             'status' => 2
         ];
-        $this->db->where('id_log', $id);
-        $this->db->update('logbook', $params);
+        $this->db->where('id_pilih', $id);
+        $this->db->update('pilihan', $params);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil diverifikasi');
-            redirect('Logbook');
+            redirect('VerifyLog');
         } else {
             set_pesan('Terjadi kesalahan saat verifikasi logbook', false);
-            redirect('Logbook');
+            redirect('VerifyLog');
         }
     }
 
@@ -131,15 +144,15 @@ class Logbook extends CI_Controller
         $params = [
             'status' => 1
         ];
-        $this->db->where('id_log', $id);
-        $this->db->update('logbook', $params);
+        $this->db->where('id_pilih', $id);
+        $this->db->update('pilihan', $params);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Cancel verifikasi berhasil');
-            redirect('Logbook');
+            redirect('VerifyLog');
         } else {
             set_pesan('Terjadi kesalahan saat cancel verifikasi logbook', false);
-            redirect('Logbook');
+            redirect('VerifyLog');
         }   
     }
 
@@ -148,8 +161,8 @@ class Logbook extends CI_Controller
         $params = [
             'metode' => 'Mandiri'
         ];
-        $this->db->where('id_log', $id);
-        $this->db->update('logbook', $params);
+        $this->db->where('id_pilih', $id);
+        $this->db->update('pilihan', $params);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Berhasil mengupdate logbook');
@@ -165,8 +178,8 @@ class Logbook extends CI_Controller
         $params = [
             'metode' => 'Supervisi'
         ];
-        $this->db->where('id_log', $id);
-        $this->db->update('logbook', $params);
+        $this->db->where('id_pilih', $id);
+        $this->db->update('pilihan', $params);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Berhasil mengupdate logbook');

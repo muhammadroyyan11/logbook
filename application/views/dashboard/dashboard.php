@@ -28,12 +28,12 @@
           </div>
           <!-- /.row -->
         </div>
-        <!-- /.box-body -->
+        <!-- /.box-body --> 
 
         <!-- /.footer -->
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9  ">
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
